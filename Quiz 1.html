@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Software Engineering Short Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .choices label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quiz 1</h1>
+    </header>
+    <div class="container">
+        <div class="question">
+            <h2>Question 1:</h2>
+            <p>What is the SDLC (Software Development Life Cycle)?</p>
+            <div class="choices">
+                <label><input type="radio" name="q1" value="a"> a) Software Development Language and Code</label>
+                <label><input type="radio" name="q1" value="b"> b) System Design and Logic Coding</label>
+                <label><input type="radio" name="q1" value="c"> c) Software Development Life Cycle</label>
+            </div>
+        </div>
+        <div class="question">
+            <h2>Question 2:</h2>
+            <p>What is the purpose of version control systems in software development?</p>
+            <div class="choices">
+                <label><input type="radio" name="q2" value="a"> a) To test software applications</label>
+                <label><input type="radio" name="q2" value="b"> b) To track changes and collaborate on code development</label>
+                <label><input type="radio" name="q2" value="c"> c) To generate software documentation</label>
+            </div>
+        </div>
+        <button onclick="gradeTest()">Submit Test</button>
+        <div id="testResult" class="result"></div>
+    </div>
+
+    <script>
+        function gradeTest() {
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            const testResult = document.getElementById('testResult');
+
+            if (!q1Answer || !q2Answer) {
+                testResult.textContent = "Please answer all questions.";
+            } else {
+                const score = (q1Answer.value === "c" ? 1 : 0) + (q2Answer.value === "b" ? 1 : 0);
+                testResult.textContent = `Your score: ${score}/2`;
+                disableTest();
+            }
+        }
+
+        function disableTest() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            const submitButton = document.querySelector('button');
+            radioButtons.forEach(button => button.disabled = true);
+            submitButton.disabled = true;
+        }
+    </script>
+</body>
+</html>
