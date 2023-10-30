@@ -1,20 +1,3 @@
-<?php
-  include('server.php');
-
-  // Check if a specific action is requested (e.g., login or register)
-  if(isset($_GET['action'])) {
-    $action = $_GET['action'];
-    if($action == 'login') {
-      include('login.php');
-    } elseif($action == 'register') {
-      include('register.php');
-    }
-  } else {
-    // If no specific action, default to login page
-    include('login.php');
-  }
-?>
-
 <?php 
   session_start(); 
 
