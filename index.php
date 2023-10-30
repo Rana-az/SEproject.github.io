@@ -16,7 +16,7 @@
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	 <a href="login.php" class="nav-item nav-link">Login</a>
+	  <a href="login.php" class="dropdown-item">Lpgin</a>
 </head>
 <body>
 
