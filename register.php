@@ -34,6 +34,16 @@
   	<p>
   		Already a member? <a href="login.php">Sign in</a>
   	</p>
+
+<?php 
+include('server.php');
+if (isset($_POST['reg_user'])) {
+  header('Location: courses.html');
+}
+?>
+<!DOCTYPE html>
+<html>
+	  
   </form>
 </body>
 </html>
