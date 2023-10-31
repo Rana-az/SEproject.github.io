@@ -1,10 +1,6 @@
 <?php
 include('server.php')
 
-if (isset($_POST['reg_user'])) {
-
-  header('Location: courses.html');
-}
 ?>
 
 <!DOCTYPE html>
