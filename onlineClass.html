@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Online Class</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #254B62;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #class-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #254B62;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="class-form">
+        <h1>Create Online Class</h1>
+        <form>
+            <label for="class-name">Class Name:</label>
+            <input type="text" id="class-name" name="class-name" required>
+
+           
+
+            <label for="class-date">Class Date:</label>
+            <input type="date" id="class-date" name="class-date" required>
+
+            <button type="button" onclick="createClass()">Create Class</button>
+        </form>
+    </div>
+    <script>
+        function createClass(){
+            alert('class created successfulluy')
+        }
+    </script>
+
+    
+    </script>
+</body>
+</html>
