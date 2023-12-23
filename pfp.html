@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile Page</title>
+<style>
+  body {
+    text-align: center;
+  }
+
+  button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  button2 {
+    background-color: rgb(223, 223, 236);
+    color: rgb(41, 13, 107);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .profile-container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+
+
+
+    label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+   
+</style>
+</head>
+<body>
+  <button>User Profile</button>
+  <button>Home</button>
+  <div class="profile-container">
+   
+ <!-- Upload Picture Input -->
+ <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;">
+    
+ <!-- Profile Picture -->
+ <img src="path/to/default-picture.jpg" alt="Profile Picture" class="profile-picture" id="profile-picture">
+
+ 
+   
+   <!-- Change Picture Button -->
+   <button2 onclick="document.getElementById('profile-picture-upload').click()">Edit profile</button2>
+ 
+ <label for="username">Username:</label>
+ <input type="text" id="username">
+ 
+ <label for="password">Password:</label>
+ <input type="password" id="password">
+ 
+ <label for="email">Email:</label>
+ <input type="email" id="email">
+
+
+
+    <script>
+      // Function to handle picture upload
+      document.getElementById('profile-picture-upload').addEventListener('change', function (event) {
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+  
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById('profile-picture').src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+ 
+</body>
+</html>
+
+
+
+
