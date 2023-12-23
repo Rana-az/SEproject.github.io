@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Page</title>
+    <style>
+        body {
+            background-color: #f0f5f9; /* Light blue background */
+            color: #333; /* Dark text color */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White container background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #3498db; /* Blue heading color */
+        }
+
+        p {
+            color: #555; /* Dark gray text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <?php
+        // Fetching data from the backend
+        $url = 'http://your-backend-url/assignment.php'; // Replace with your actual backend URL
+        $data = json_decode(file_get_contents($url), true);
+
+        // Displaying assignment details
+        if ($data) {
+            echo '<h1>' . htmlspecialchars($data['title']) . '</h1>';
+            echo '<p>' . htmlspecialchars($data['description']) . '</p>';
+            // Add more HTML for additional details
+        } else {
+            echo '<p>Failed to fetch assignment details.</p>';
+        }
+        ?>
+    </div>
+</body>
+</html>
