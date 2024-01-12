@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Creation Interface</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .options-container input {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quiz Creation</h1>
+
+  <form id="testForm">
+    <!-- Test Information -->
+    <label for="testTitle">Test Title:</label>
+    <input type="text" id="testTitle" required>
+
+    <label for="testDescription">Description:</label>
+    <textarea id="testDescription" rows="4"></textarea>
+
+    <label for="timeLimit">Time Limit (minutes):</label>
+    <select id="timeLimit">
+      <option value="15">15</option>
+      <option value="30">30</option>
+      <option value="45">45</option>
+      <option value="60">60</option>
+    </select>
+
+    <!-- Add Questions -->
+    <h2>Add Questions</h2>
+
+    <div id="questionsContainer"></div>
+
+    <button type="button" onclick="addQuestion()">Add Another Question</button>
+
+    <!-- Test Settings -->
+    <h2>Test Settings</h2>
+
+    <label for="randomizeQuestions">
+      <input type="checkbox" id="randomizeQuestions"> Randomize Questions
+    </label>
+
+    <label for="randomizeAnswerChoices">
+      <input type="checkbox" id="randomizeAnswerChoices"> Randomize Answer Choices
+    </label>
+
+    <label for="allowMultipleAttempts">
+      <input type="checkbox" id="allowMultipleAttempts"> Allow Multiple Attempts
+    </label>
+
+    <!-- Review and Save -->
+    <h2>Review and Save</h2>
+
+    <button type="button" onclick="previewTest()">Preview Test</button>
+    <button type="submit">Save Test</button>
+  </form>
+
+  <script>
+    function addQuestion() {
+      const questionsContainer = document.getElementById('questionsContainer');
+
+      const questionDiv = document.createElement('div');
+      questionDiv.innerHTML = `
+        <hr>
+        <label for="questionType">Question Type:</label>
+        <select name="questionType">
+          <option value="multipleChoice">Multiple Choice</option>
+          <option value="trueFalse">True/False</option>
+          <option value="shortAnswer">Short Answer</option>
+        </select>
+
+        <label for="questionText">Question Text:</label>
+        <textarea name="questionText" rows="4"></textarea>
+
+        <div class="options-container">
+          <label for="options">Options:</label>
+          <input type="text" name="option1" placeholder="Option 1">
+          <input type="text" name="option2" placeholder="Option 2">
+          <input type="text" name="option3" placeholder="Option 3">
+          <!-- Add more options if needed -->
+        </div>
+
+        <label for="correctAnswer">Correct Answer:</label>
+        <input type="text" name="correctAnswer">
+      `;
+      questionsContainer.appendChild(questionDiv);
+    }
+
+    function previewTest() {
+      // JavaScript logic to preview the test
+      alert('Functionality to preview the test goes here.');
+    }
+  </script>
+
+</body>
+</html>
