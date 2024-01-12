@@ -1,18 +1,33 @@
 <?php
-// Assuming you have a database connection established
+// Assuming you have a database connection
+// Replace placeholders with actual database details
+$servername = "your_servername";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_dbname";
 
-// Fetching assignment details from the database
-$assignmentTitle = "Sample Assignment";
-$assignmentDescription = "This is a sample assignment description.";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// You can fetch more details as needed
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Sending data as JSON
-header('Content-Type: application/json');
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $assignmentTitle = $_POST["assignment_title"];
+    $description = $_POST["description"];
 
-echo json_encode([
-    'title' => $assignmentTitle,
-    'description' => $assignmentDescription,
-    // Add more data as needed
-]);
+    // Insert assignment into the database
+    $sql = "INSERT INTO assignments (assignment_title, description) VALUES ('$assignmentTitle', '$description')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Assignment created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+// Close the database connection
+$conn->close();
 ?>

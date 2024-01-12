@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment Page</title>
+    <title>Create Assignment</title>
     <style>
         body {
-            background-color: #f0f5f9; /* Light blue background */
-            color: #333; /* Dark text color */
+            background-color: #f0f5f5;
             font-family: Arial, sans-serif;
+            color: #333;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
+        header {
+            background-color: #3498db;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        form {
+            background-color: #ecf0f1;
             padding: 20px;
-            background-color: #fff; /* White container background */
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
-        h1 {
-            color: #3498db; /* Blue heading color */
+        label {
+            display: block;
+            margin-bottom: 10px;
         }
 
-        p {
-            color: #555; /* Dark gray text color */
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <?php
-        // Fetching data from the backend
-        $url = 'http://your-backend-url/assignment.php'; // Replace with your actual backend URL
-        $data = json_decode(file_get_contents($url), true);
 
-        // Displaying assignment details
-        if ($data) {
-            echo '<h1>' . htmlspecialchars($data['title']) . '</h1>';
-            echo '<p>' . htmlspecialchars($data['description']) . '</p>';
-            // Add more HTML for additional details
-        } else {
-            echo '<p>Failed to fetch assignment details.</p>';
-        }
-        ?>
-    </div>
+<body>
+    <header>
+        Create Assignment
+    </header>
+    <section>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <label for="assignment_title">Assignment Title:</label>
+            <input type="text" id="assignment_title" name="assignment_title" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Create Assignment</button>
+        </form>
+    </section>
 </body>
+
 </html>
