@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strong Password Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .password-container {
+      text-align: center;
+    }
+
+    #password-input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    #strength-meter {
+      width: 300px;
+      height: 10px;
+      background-color: #ddd;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    #strength-bar {
+      height: 100%;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+
+    #strength-text {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .weak {
+      background-color: #ff5454;
+    }
+
+    .medium {
+      background-color: #ffbc54;
+    }
+
+    .strong {
+      background-color: #54ff54;
+    }
+  </style>
+</head>
+<body>
+
+<div class="password-container">
+  <label for="password-input">Password:</label>
+  <input type="password" id="password-input" oninput="checkPasswordStrength()">
+  <div id="strength-meter">
+    <div id="strength-bar"></div>
+  </div>
+  <p id="strength-text">Strength: <span id="strength-label">Weak</span></p>
+</div>
+
+<script>
+  function checkPasswordStrength() {
+    var password = document.getElementById("password-input").value;
+    var strengthBar = document.getElementById("strength-bar");
+    var strengthLabel = document.getElementById("strength-label");
+
+    // Check password strength and set the strength bar width and label
+    var strength = 0;
+    if (password.length >= 8) strength += 1;
+    if (password.match(/[a-z]+/)) strength += 1;
+    if (password.match(/[A-Z]+/)) strength += 1;
+    if (password.match(/[0-9]+/)) strength += 1;
+    if (password.match(/[!@#$%^&*(),.?":{}|<>]+/)) strength += 1;
+
+    if (strength === 0) {
+      strengthBar.style.width = "0%";
+      strengthLabel.textContent = "Weak";
+      strengthBar.className = "weak";
+    } else if (strength <= 2) {
+      strengthBar.style.width = "50%";
+      strengthLabel.textContent = "Medium";
+      strengthBar.className = "medium";
+    } else {
+      strengthBar.style.width = "100%";
+      strengthLabel.textContent = "Strong";
+      strengthBar.className = "strong";
+    }
+  }
+</script>
+
+</body>
+</html>
