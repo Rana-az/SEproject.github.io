@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-info {
+            padding: 20px;
+        }
+
+        .profile-info p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .profile-info h2 {
+            color: #007bff;
+        }
+
+        .edit-form {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .edit-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .edit-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .edit-form button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .access-home-button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>User Profile</h1>
+        </div>
+        <div class="profile-info" id="profileInfo">
+            <h2 id="userName">John Doe</h2>
+            <p>Email: john.doe@example.com</p>
+        </div>
+        <div class="edit-form">
+            <label for="editName">Edit Name:</label>
+            <input type="text" id="editName" placeholder="Enter your name">
+            <label for="editEmail">Edit Email:</label>
+            <input type="email" id="editEmail" placeholder="Enter your email">
+            <button onclick="updateProfile()">Update Profile</button>
+        </div>
+        <div class="access-home-button" onclick="homeEducator()"> Eductor Page </div>
+    </div>
+
+    <script>
+        function updateProfile() {
+            var newName = document.getElementById("editName").value;
+            var newEmail = document.getElementById("editEmail").value;
+
+            if (newName !== "") {
+                document.getElementById("userName").innerText = newName;
+            }
+
+            if (newEmail !== "") {
+                document.getElementById("profileInfo").children[1].innerText = "Email: " + newEmail;
+            }
+        }
+
+        function homeEducator() {
+            // Replace this placeholder link with the actual link to your page
+            window.location.href = "https://example.com/courses";
+        }
+    </script>
+
+</body>
+</html>
